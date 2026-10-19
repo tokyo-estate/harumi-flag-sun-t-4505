@@ -172,6 +172,9 @@ figcaption .t{color:#fff;font-weight:400}
 .walk{background:#0b0a09}
 .walk video{height:100svh;max-height:none;display:block}
 .walk .walk-v{position:relative}
+.walk{position:relative;overflow:hidden}
+@media (min-width:760px){.walk::before{content:"";position:absolute;inset:-40px;background:url(img/poster_walk.jpg) center/cover;filter:blur(48px) brightness(.32);z-index:0}}
+@media (max-width:759px){.walk video{width:100%;height:auto;aspect-ratio:9/16;max-height:none}.walk .walk-in{display:flex;flex-direction:column-reverse}.walk .cap{position:static;padding:24px 22px 34px;background:#0b0a09}}
 .walk .cap{pointer-events:none}
 
 /* ---------- panorama marquee ---------- */
@@ -415,13 +418,17 @@ html[lang="zh"] .hero .info .p small{display:none}
   </div>
 </section>
 
-<!-- 02 BALCONY MOVIE -->
-<section class="movie wide">
-  <video class="lazy" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="img/poster_loop_balcony.jpg" data-webm="video/loop_balcony.webm" data-mp4="video/loop_balcony.mp4"></video>
-  <div class="cap">
-    <p class="no">02 — Balcony</p>
-    <h2 data-i18n="t031">42.39㎡のL字バルコニー、<br>空に開く南西の角</h2>
-    <p data-i18n="t032">住戸の二面を包むL字のバルコニー。<br>東京湾と都心の街並みを、45階の高さから。</p>
+<!-- 02 WALKTHROUGH（内覧動画・縦） -->
+<section class="movie walk">
+  <div class="walk-in">
+    <div class="cap rv">
+      <p class="no">02 — Balcony</p>
+      <h2 data-i18n="t031">42.39㎡のL字バルコニー、<br>空に開く南西の角</h2>
+      <p data-i18n="t032">住戸の二面を包むL字のバルコニー。<br>東京湾と都心の街並みを、45階の高さから。</p>
+    </div>
+    <div class="walk-v rv">
+      <video class="lazy" muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="none" poster="img/poster_walk.jpg" data-webm="video/walkthrough.webm" data-mp4="video/walkthrough.mp4"></video>
+    </div>
   </div>
 </section>
 
@@ -435,8 +442,8 @@ html[lang="zh"] .hero .info .p small{display:none}
       <p class="lead" data-i18n="t034">正面にレインボーブリッジと東京湾、その先に築地・汐留から東京タワーまでの都心のスカイライン。眼下には晴海フラッグの街並みが広がります。</p>
     </div>
     <div class="stack">
-      <figure class="full rv zoom"><img src="img/v21_view_bay.jpg" width="1800" height="1350" loading="lazy" alt="レインボーブリッジ方面"><figcaption><span class="t" data-i18n="t035">レインボーブリッジと東京湾</span><span class="d" data-i18n="t036">　帆船・日本丸の停泊する晴海ふ頭も眼下に</span></figcaption></figure>
-      <div class="grid grid-2 grid-d3 rv">
+      <div class="grid grid-2 grid-d2 rv">
+        <figure class="zoom"><img src="img/v21_view_bay.jpg" width="1800" height="1350" loading="lazy" alt="レインボーブリッジ方面"><figcaption><span class="t" data-i18n="t035">レインボーブリッジと東京湾</span><span class="d" data-i18n="t036">　帆船・日本丸の停泊する晴海ふ頭も眼下に</span></figcaption></figure>
         <figure class="zoom"><img src="img/v22_view_tsukiji.jpg" width="1800" height="1328" loading="lazy" alt="築地・都心方面"><figcaption><span class="t" data-i18n="t037">築地・都心方面</span></figcaption></figure>
         <figure class="zoom"><img src="img/v23_view_tokyotower.jpg" width="1477" height="1108" loading="lazy" alt="東京タワー方面"><figcaption><span class="t" data-i18n="t038">東京タワー方面</span></figcaption></figure>
         <figure class="zoom"><img src="img/v24_view_below.jpg" width="1477" height="1108" loading="lazy" alt="眼下の晴海フラッグ"><figcaption><span class="t" data-i18n="t039">眼下の晴海フラッグ</span></figcaption></figure>
@@ -599,9 +606,9 @@ html[lang="zh"] .hero .info .p small{display:none}
       <li data-i18n="t005">45階 南西角住戸</li><li>3LDK＋WIC＋S</li><li>92.76㎡</li><li data-i18n="t007">バルコニー 42.39㎡</li><li data-i18n="t008">空室</li>
     </ul>
     <div class="pdfs rv" id="pdfs">
-      <a href="pdf/view.html?lang=ja&v=20261020o" data-pdf="ja" target="_blank" rel="noopener">日本語 PDF</a>
-      <a href="pdf/view.html?lang=en&v=20261020o" data-pdf="en" target="_blank" rel="noopener">English PDF</a>
-      <a href="pdf/view.html?lang=zh&v=20261020o" data-pdf="zh" target="_blank" rel="noopener">中文 PDF</a>
+      <a href="pdf/view.html?lang=ja&v=20261020p" data-pdf="ja" target="_blank" rel="noopener">日本語 PDF</a>
+      <a href="pdf/view.html?lang=en&v=20261020p" data-pdf="en" target="_blank" rel="noopener">English PDF</a>
+      <a href="pdf/view.html?lang=zh&v=20261020p" data-pdf="zh" target="_blank" rel="noopener">中文 PDF</a>
     </div>
   </div>
 </section>
