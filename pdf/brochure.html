@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Brochure</title>
+<style>
+:root{--gold:#c9a962;--gold2:#d9bf7a;--dark:#0b0d10;--paper:#f4f1ea;--paper2:#ebe6dc;--ink:#1b1b1b;--mute:#6d675d;--line:#d8d2c6}
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;color:var(--ink);background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html[lang="zh"] body{font-family:"PingFang SC","Hiragino Sans GB","Noto Sans SC",sans-serif}
+html[lang="en"] body{font-family:"Helvetica Neue","Hiragino Sans",sans-serif}
+br.sp{display:none}
+.page{width:210mm;height:297mm;overflow:hidden;position:relative;page-break-after:always;background:var(--paper)}
+.page:last-child{page-break-after:auto}
+.page.dark{background:var(--dark);color:#fff}
+.page .inner{position:absolute;left:14mm;right:14mm;top:13mm;bottom:15mm;overflow:hidden}
+.foot{position:absolute;left:14mm;right:14mm;bottom:7mm;display:flex;justify-content:space-between;font-size:6.5pt;letter-spacing:.2em;color:var(--mute);text-transform:uppercase}
+.dark .foot{color:#8f887c}
+.no{display:flex;align-items:center;gap:4mm;font-size:7.5pt;font-weight:500;letter-spacing:.34em;color:var(--gold);text-transform:uppercase}
+.no::before{content:"";width:9mm;height:1px;background:var(--gold)}
+h2{font-size:16pt;font-weight:300;letter-spacing:.08em;line-height:1.45;margin:2.5mm 0 2mm}
+.lead,.hd p{font-size:8.3pt;line-height:1.75;color:var(--mute);max-width:165mm}
+.dark .lead,.dark .hd p{color:#cfc9bd}
+.hd{margin-bottom:4mm}
+.row{display:grid;gap:3.5mm;margin-bottom:3.5mm}
+.row.c2{grid-template-columns:1fr 1fr}.row.c3{grid-template-columns:1fr 1fr 1fr}
+.ph{overflow:hidden;background:#222}
+.ph img{display:block;width:100%;height:100%;object-fit:cover}
+.ph.contain{background:#fff}.ph.contain img{object-fit:contain}
+figcaption,.cap{font-size:6.8pt;color:var(--mute);margin-top:1.3mm;line-height:1.4}
+.dark figcaption{color:#b9b2a5}
+figcaption .t{font-weight:500;color:var(--ink)}.dark figcaption .t{color:#fff}
+figcaption .d{display:block}
+.note{font-size:6.6pt;line-height:1.6;color:var(--mute);text-indent:-1em;padding-left:1em;margin:1.5mm 0}
+.dark .note{color:#9b9488}
+.big{font-size:24pt;font-weight:200;line-height:1;margin:2mm 0}
+.big small{font-size:8pt;color:var(--mute);margin-left:2mm}
+ul{list-style:none}
+.chips{display:flex;flex-wrap:wrap;gap:1.5mm 2mm;margin:2.5mm 0}
+.chips li{font-size:7.2pt;padding:1.1mm 3mm;border:1px solid var(--line);border-radius:99px}
+.dark .chips li{border-color:rgba(255,255,255,.4)}
+.floors{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm;margin:2mm 0 3.5mm}
+.floors li{border:1px solid var(--line);padding:2.5mm 3mm;font-size:7pt;line-height:1.55}
+.dark .floors li{border-color:rgba(255,255,255,.25)}
+.floors .f{font-size:12pt;font-weight:200;color:var(--gold);line-height:1;margin-bottom:1.5mm}
+.floors .n span{display:block;font-weight:500}
+.floors .d{color:var(--mute);margin-top:1mm}.dark .floors .d{color:#b9b2a5}
+.tl{display:grid;grid-template-columns:1fr 1fr;gap:2.5mm 6mm;margin:1mm 0 3.5mm}
+.tl li{border-left:2px solid var(--gold);padding:.5mm 0 .5mm 3mm;font-size:7.2pt;line-height:1.5}
+.tl .y{color:var(--gold);font-weight:500;letter-spacing:.06em}.tl .t{font-weight:500}.tl .d{color:var(--mute)}.dark .tl .d{color:#b9b2a5}
+.times{display:grid;grid-template-columns:1fr 1fr;gap:1mm 8mm;margin:2mm 0 3mm}
+.times li{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(127,127,127,.3);padding:1.3mm 0;font-size:8pt}
+.times .to small{font-size:6.5pt;color:var(--gold);margin-left:1mm}
+.times .m{font-size:13pt;font-weight:200}.times .m small{font-size:6.5pt;margin-left:.5mm;color:var(--gold)}
+.eq{display:grid;grid-template-columns:repeat(4,1fr);gap:3mm;margin:2mm 0 3mm}
+.eq li img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.eq .n{font-size:7pt;margin-top:1.2mm;line-height:1.4}
+.tbl2{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin-bottom:3mm}
+.tbl{width:100%;border-collapse:collapse;font-size:6.9pt;line-height:1.5}
+.tbl th,.tbl td{border-top:1px solid var(--line);padding:1.5mm 1.5mm;text-align:left;vertical-align:top}
+.tbl th{width:22mm;color:var(--gold);font-weight:500;white-space:nowrap}
+.tbl b{font-size:9pt}.tbl small{font-size:6pt}
+/* cover / back */
+.cover{background:#000}
+.cover .bg{position:absolute;inset:0}.cover .bg img{width:100%;height:100%;object-fit:cover}
+.cover .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,0) 30%,rgba(0,0,0,.32) 52%,rgba(0,0,0,.92))}
+.cover .in{position:absolute;left:14mm;right:14mm;bottom:15mm;color:#fff}
+.cover .en{font-size:8pt;font-weight:600;letter-spacing:.36em;color:#ecd9a6;text-transform:uppercase;text-shadow:0 0 6px rgba(0,0,0,.85),0 1px 14px rgba(0,0,0,.7)}
+.cover .cp,.cover h1,.cover .no{text-shadow:0 1px 12px rgba(0,0,0,.55)}
+.cover .no{display:block;font-size:60pt;font-weight:200;line-height:1;margin-top:3mm;letter-spacing:-.01em;color:#fff}
+.cover .no::before{display:none}
+.cover .no small{font-size:14pt;font-weight:300;letter-spacing:.2em;margin-left:3mm;color:var(--gold2)}
+.cover h1{font-size:16pt;font-weight:400;letter-spacing:.14em;margin-top:2.5mm}
+.cover .tag{font-size:9.5pt;font-weight:300;letter-spacing:.12em;color:var(--gold2);margin-top:2mm}
+.cover .cp{font-size:15pt;font-weight:300;letter-spacing:.22em;color:#fff;margin:3mm 0 1mm}
+.subh{display:flex;align-items:center;gap:3mm;font-size:7.5pt;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin:16mm 0 4mm}.subh::before{content:"";width:9mm;height:1px;background:var(--gold)}
+.cover .spec{display:flex;flex-wrap:wrap;gap:1.5mm 2mm;margin:3mm 0}
+.cover .spec li{font-size:7.3pt;padding:1.1mm 3mm;border:1px solid rgba(255,255,255,.45);border-radius:99px}
+.cover .p,.back .p{display:flex;align-items:baseline;gap:3mm;font-size:9pt;letter-spacing:.12em;margin-top:2mm}
+.cover .p b,.back .p b{font-size:24pt;font-weight:700;color:var(--gold2)}
+.cover .p small{font-size:7.5pt;color:#cfc9bd}
+.keys{margin-top:5mm}
+.keys ul{display:grid;grid-template-columns:repeat(6,1fr);border:1px solid rgba(255,255,255,.25)}
+.keys li{text-align:center;padding:3mm 1mm;border-right:1px solid rgba(255,255,255,.25)}
+.keys li:last-child{border-right:0}
+.keys .v{font-size:14pt;font-weight:200;line-height:1.1;white-space:nowrap}
+.keys .v small{font-size:6.5pt;margin-left:.5mm;color:var(--gold2)}
+.keys .k{font-size:5.4pt;letter-spacing:.18em;color:#9b9488;margin-top:1.2mm;text-transform:uppercase}
+.back .in h2{font-size:21pt;color:#fff}
+.back .in ul{display:flex;flex-wrap:wrap;gap:1.5mm 2mm;margin:3mm 0}
+.back .in ul li{font-size:7.3pt;padding:1.1mm 3mm;border:1px solid rgba(255,255,255,.45);border-radius:99px}
+.back .url{font-size:7pt;color:#b9b2a5;margin-top:5mm;letter-spacing:.06em}
+</style>
+</head>
+<body>
+<script>
+const DATA={"chapters": [{"no": "01 — Floor Plan", "light": true, "h2": "<h2 data-i18n=\"t021\">45階の南西角住戸、<br/>L字バルコニーの3LDK</h2>", "lead": "", "blocks": [{"type": "row", "cols": 1, "figs": [{"type": "fig", "src": "img/u00_plan3d.jpg?v=20261020", "w": 1800, "h": 1344, "cap": "<span class=\"t\" data-i18n=\"t019\">3D間取図</span><span class=\"d\" data-i18n=\"t020\">　内装・家具はイメージです</span>"}]}, {"type": "html", "cls": "big", "html": "<div class=\"big\">92.76<small>㎡</small></div>"}, {"type": "html", "cls": "chips", "html": "<ul class=\"chips\">\n<li data-i18n=\"t023\">LD 約16.6帖</li><li data-i18n=\"t024\">キッチン 約4.4帖</li><li data-i18n=\"t025\">洋室(1) 約7.5帖</li><li data-i18n=\"t026\">洋室(2) 約7.0帖</li><li data-i18n=\"t027\">洋室(3) 約5.0帖</li><li data-i18n=\"t028\">WIC 約1.8帖</li><li data-i18n=\"t029\">納戸 約0.9帖</li><li data-i18n=\"t030\">浴室 1620</li><li data-i18n=\"t007\">バルコニー 42.39㎡</li>\n</ul>"}], "maxPages": 1, "grid": 0}, {"no": "02 — View", "light": false, "h2": "<h2 data-i18n=\"t033\">レインボーブリッジから、<br/>東京タワーまで</h2>", "lead": "<p class=\"lead\" data-i18n=\"t034\">正面にレインボーブリッジと東京湾、その先に築地・汐留から東京タワーまでの都心のスカイライン。眼下には晴海フラッグの街並みが広がります。</p>", "blocks": [{"type": "row", "cols": 1, "figs": [{"type": "fig", "src": "img/v21_view_bay.jpg", "w": 1800, "h": 1350, "cap": "<span class=\"t\" data-i18n=\"t035\">レインボーブリッジと東京湾</span><span class=\"d\" data-i18n=\"t036\">　帆船・日本丸の停泊する晴海ふ頭も眼下に</span>"}]}, {"type": "row", "cols": 3, "figs": [{"type": "fig", "src": "img/v22_view_tsukiji.jpg", "w": 1800, "h": 1328, "cap": "<span class=\"t\" data-i18n=\"t037\">築地・都心方面</span>"}, {"type": "fig", "src": "img/v23_view_tokyotower.jpg", "w": 1477, "h": 1108, "cap": "<span class=\"t\" data-i18n=\"t038\">東京タワー方面</span>"}, {"type": "fig", "src": "img/v24_view_below.jpg", "w": 1477, "h": 1108, "cap": "<span class=\"t\" data-i18n=\"t039\">眼下の晴海フラッグ</span>"}]}], "maxPages": 1, "grid": 0}, {"no": "03 — Interior", "light": true, "h2": "<h2 data-i18n=\"t040\">眺望とつながる、<br/>3LDKの室内</h2>", "lead": "<p class=\"lead\" data-i18n=\"t041\">LD約16.6帖・キッチン約4.4帖、<br/>洋室は約7.5帖・7.0帖・5.0帖の3室。<br/>二面の大開口から湾岸の眺望へ。</p>", "blocks": [{"type": "row", "cols": 1, "figs": [{"type": "fig", "src": "img/u21_corner.jpg", "w": 1753, "h": 1279, "cap": "<span class=\"t\" data-i18n=\"t042\">コーナーの大開口</span>"}]}, {"type": "row", "cols": 3, "figs": [{"type": "fig", "src": "img/u22_ld_sunset.jpg", "w": 1706, "h": 1279, "cap": "<span class=\"t\" data-i18n=\"t043\">LDからの夕景</span>"}, {"type": "fig", "src": "img/u23_ld.jpg", "w": 1350, "h": 1800, "cap": "<span class=\"t\" data-i18n=\"t044\">リビングダイニング</span>"}, {"type": "fig", "src": "img/u24_kitchen.jpg", "w": 1477, "h": 1108, "cap": "<span class=\"t\" data-i18n=\"t024\">キッチン 約4.4帖</span>"}]}, {"type": "row", "cols": 2, "figs": [{"type": "fig", "src": "img/u25_washroom.jpg", "w": 956, "h": 1047, "cap": "<span class=\"t\" data-i18n=\"t045\">洗面室</span>"}, {"type": "fig", "src": "img/u26_bath.jpg", "w": 1477, "h": 1108, "cap": "<span class=\"t\" data-i18n=\"t030\">浴室 1620</span>"}]}], "maxPages": 1, "grid": 0}, {"no": "04 — Facilities", "light": true, "h2": "<h2 data-i18n=\"t046\">48階のラウンジから、<br/>街じゅうの共用施設まで</h2>", "lead": "<p class=\"lead\" data-i18n=\"t047\">T棟48階のスカイラウンジとゲストルーム。<br class=\"pc\"/>SUN VILLAGE専用の施設に加え、<br class=\"sp\"/>SEA・SUN・PARKの街区共用施設も利用できます。</p>", "blocks": [{"type": "row", "cols": 3, "figs": [{"type": "fig", "src": "img/c20_urban1.jpg", "w": 1200, "h": 900, "cap": "<span class=\"t\">48F SKY LOUNGE URBAN</span><span class=\"d\" data-i18n=\"t049\">　8:00〜22:30・無償（バー飲食代は別）</span>"}, {"type": "fig", "src": "img/c21_urban2.jpg", "w": 1200, "h": 901, "cap": "<span class=\"t\" data-i18n=\"t050\">URBANからの眺望</span>"}, {"type": "fig", "src": "img/c23_urban4.jpg", "w": 1200, "h": 900, "cap": "<span class=\"t\" data-i18n=\"t051\">URBAN ラウンジ席</span>"}]}, {"type": "row", "cols": 3, "figs": [{"type": "fig", "src": "img/c30_shizuku1.jpg", "w": 1200, "h": 901, "cap": "<span class=\"t\">48F SHIZUKU SUITE</span><span class=\"d\" data-i18n=\"t052\">　SUN VILLAGE専用・1泊6,000円</span>"}, {"type": "fig", "src": "img/c31_shizuku2.jpg", "w": 1200, "h": 900, "cap": "<span class=\"t\" data-i18n=\"t053\">SHIZUKU 円形バス</span>"}, {"type": "fig", "src": "img/c33_ikoi1.jpg", "w": 1200, "h": 901, "cap": "<span class=\"t\">48F IKOI SUITE</span><span class=\"d\" data-i18n=\"t054\">　SUN VILLAGE専用・1泊8,000円</span>"}]}, {"type": "row", "cols": 3, "figs": [{"type": "fig", "src": "img/c35_ikoi3.jpg", "w": 1200, "h": 900, "cap": "<span class=\"t\" data-i18n=\"t055\">IKOI ベッドルーム</span>"}, {"type": "fig", "src": "img/c34_ikoi2.jpg", "w": 1200, "h": 901, "cap": "<span class=\"t\" data-i18n=\"t056\">IKOI キッチン</span><span class=\"d\" data-i18n=\"t057\">　パーティー利用 1枠3,000円</span>"}, {"type": "fig", "src": "img/c43_kodomo1.jpg", "w": 1200, "h": 900, "cap": "<span class=\"t\">2F KODOMO PLAZA</span><span class=\"d\" data-i18n=\"t058\">　SUN VILLAGE専用・8:00〜18:00・無償</span>"}]}, {"type": "row", "cols": 3, "figs": [{"type": "fig", "src": "img/c40_entrance1.jpg", "w": 1200, "h": 900, "cap": "<span class=\"t\" data-i18n=\"t059\">T棟 エントランスホール</span>"}, {"type": "fig", "src": "img/c41_entrance2.jpg", "w": 1200, "h": 900, "cap": "<span class=\"t\" data-i18n=\"t060\">T棟 エントランス</span>"}, {"type": "fig", "src": "img/c44_talksalon.jpg", "w": 1200, "h": 901, "cap": "<span class=\"t\" data-i18n=\"t061\">T棟 トークサロン</span>"}]}, {"type": "row", "cols": 3, "figs": [{"type": "fig", "src": "img/k_s04_mori.jpg", "w": 1336, "h": 1268, "cap": "<span class=\"t\">MORI SUITE</span><span class=\"d\" data-i18n=\"t063\">　専用・B棟1F・1泊6,000円</span>"}, {"type": "fig", "src": "img/k_s05_kokage.jpg", "w": 1336, "h": 1112, "cap": "<span class=\"t\">KOKAGE SUITE</span><span class=\"d\" data-i18n=\"t063\">　専用・B棟1F・1泊6,000円</span>"}, {"type": "fig", "src": "img/k_s06_irori.jpg", "w": 1336, "h": 1112, "cap": "<span class=\"t\">IRORI SUITE</span><span class=\"d\" data-i18n=\"t064\">　専用・C棟1F・1泊6,000円</span>"}]}, {"type": "row", "cols": 3, "figs": [{"type": "fig", "src": "img/k_s07_terrace.jpg", "w": 1336, "h": 1100, "cap": "<span class=\"t\">PARTY ROOM TERRACE</span><span class=\"d\" data-i18n=\"t065\">　専用・B棟14F・1回5,000円</span>"}, {"type": "fig", "src": "img/k_s11_opendining.jpg", "w": 1324, "h": 756, "cap": "<span class=\"t\">OPEN DINING</span><span class=\"d\" data-i18n=\"t066\">　C棟1F・8:00〜22:00・無償</span>"}, {"type": "fig", "src": "img/k_s09_board.jpg", "w": 1336, "h": 1184, "cap": "<span class=\"t\">BOARD ROOM</span><span class=\"d\" data-i18n=\"t067\">　A棟1F・1時間300円</span>"}]}, {"type": "row", "cols": 3, "figs": [{"type": "fig", "src": "img/c10_ocean1.jpg", "w": 1200, "h": 900, "cap": "<span class=\"t\" data-i18n=\"t069\">PARK T棟48F SKY LOUNGE OCEAN</span><span class=\"d\" data-i18n=\"t070\">　8:00〜22:30・無償</span>"}, {"type": "fig", "src": "img/k_a18_sun_d_theater_room.jpg", "w": 1400, "h": 1302, "cap": "<span class=\"t\">THEATER ROOM</span><span class=\"d\" data-i18n=\"t071\">　SUN D棟・1時間500円</span>"}, {"type": "fig", "src": "img/k_a19_sun_f_cafe_lounge.jpg", "w": 1400, "h": 1308, "cap": "<span class=\"t\">CAFE LOUNGE</span><span class=\"d\" data-i18n=\"t072\">　SUN F棟・6:00〜24:00</span>"}]}, {"type": "row", "cols": 3, "figs": [{"type": "fig", "src": "img/k_a17_sun_b_sports_bar.jpg", "w": 1400, "h": 916, "cap": "<span class=\"t\">SPORTS BAR</span><span class=\"d\" data-i18n=\"t073\">　SUN B棟・ゴルフコーナー併設</span>"}, {"type": "fig", "src": "img/k_s14_sunlobby.jpg", "w": 1336, "h": 1272, "cap": "<span class=\"t\">SUN LOBBY</span><span class=\"d\" data-i18n=\"t074\">　SUN E棟・24時間</span>"}, {"type": "fig", "src": "img/k_p14_flagcore.jpg", "w": 1336, "h": 1276, "cap": "<span class=\"t\">FLAG CORE</span><span class=\"d\" data-i18n=\"t075\">　PARK C棟・9:00〜21:00</span>"}]}, {"type": "row", "cols": 3, "figs": [{"type": "fig", "src": "img/t01_garden.jpg", "w": 1600, "h": 1066, "cap": "<span class=\"t\">PARTY ROOM GARDEN</span><span class=\"d\" data-i18n=\"t076\">　PARK A棟・貸切1回5,000円</span>"}, {"type": "fig", "src": "img/k_a04_park_b_library_lounge.jpg", "w": 1400, "h": 1339, "cap": "<span class=\"t\">LIBRARY LOUNGE</span><span class=\"d\" data-i18n=\"t077\">　PARK B棟・24時間</span>"}, {"type": "fig", "src": "img/k_a06_park_d_ashiyu_lounge.jpg", "w": 1400, "h": 1347, "cap": "<span class=\"t\">ASHIYU LOUNGE</span><span class=\"d\" data-i18n=\"t078\">　PARK D棟・足湯・無償</span>"}]}, {"type": "row", "cols": 3, "figs": [{"type": "fig", "src": "img/k_a10_park_b_green_roof.jpg", "w": 1400, "h": 1325, "cap": "<span class=\"t\">GREEN ROOF</span><span class=\"d\" data-i18n=\"t079\">　PARK B棟2F・屋上庭園</span>"}, {"type": "fig", "src": "img/k_a13_sea_a_book_lounge.jpg", "w": 1400, "h": 1325, "cap": "<span class=\"t\">BOOK LOUNGE</span><span class=\"d\" data-i18n=\"t080\">　SEA A棟・24時間</span>"}, {"type": "fig", "src": "img/t03_party_ocean.jpg", "w": 1600, "h": 1066, "cap": "<span class=\"t\">PARTY ROOM OCEAN</span><span class=\"d\" data-i18n=\"t081\">　SEA E棟・1回5,000円</span>"}]}], "maxPages": 2, "grid": 3}, {"no": "05 — Structure", "light": false, "h2": "<h2 data-i18n=\"t082\">免震×制震の<br/>ハイブリッド構造</h2>", "lead": "<p class=\"lead\" data-i18n=\"t083\">建物の下の免震層（積層ゴム・免震ダンパー）が<br/>地震の揺れを建物に伝えにくくし、<br/>さらに間柱型の制震ダンパーが<br/>地震エネルギーを吸収します。</p>", "blocks": [{"type": "html", "cls": "floors", "html": "<ul class=\"floors rv\">\n<li data-f=\"HYBRID\"><p class=\"f\">Hybrid</p><p class=\"n\" data-i18n=\"t084\">免震＋制震のハイブリッド構造</p><p class=\"d\" data-i18n=\"t085\">柱の少ない、眺望を活かす住空間に</p></li>\n<li data-f=\"LONG-LIFE\"><p class=\"f\">Certified</p><p class=\"n\" data-i18n=\"t086\">長期優良住宅 認定取得</p><p class=\"d\" data-i18n=\"t087\">劣化対策・省エネ性・バリアフリー性</p></li>\n<li data-f=\"LOW-CO2\"><p class=\"f\">Eco</p><p class=\"n\" data-i18n=\"t088\">低炭素建築物 認定取得</p><p class=\"d\" data-i18n=\"t089\">HEMS・節水型水栓などを採用</p></li>\n<li data-f=\"ENERGY\"><p class=\"f\">Energy</p><p class=\"n\" data-i18n=\"t090\">エネファーム＋蓄電池</p><p class=\"d\" data-i18n=\"t091\">全住戸に設置（分譲街区で日本初）</p></li>\n<li data-f=\"SI\"><p class=\"f\">Skeleton Infill</p><p class=\"n\" data-i18n=\"t092\">スケルトン・インフィル</p><p class=\"d\" data-i18n=\"t093\">配管スペースを住戸の外に配置</p></li>\n<li data-f=\"2,600\"><p class=\"f\">Ceiling</p><p class=\"n\" data-i18n=\"t094\">LD天井高 約2,600mm</p><p class=\"d\" data-i18n=\"t095\">サッシ高 約2,100mm・廊下幅 約1,000mm</p></li>\n</ul>"}, {"type": "row", "cols": 1, "figs": [{"type": "fig", "src": "img/s01_structure_{lang}.jpg", "w": 1225, "h": 758, "cap": "<span class=\"t\" data-i18n=\"t097\">構造検討概念図</span><span class=\"d\" data-i18n=\"t098\">　耐震・免震・免制震の比較</span>"}]}, {"type": "html", "cls": "subh", "html": "<p class=\"subh\">06 — Access</p>"}, {"type": "html", "cls": "times", "html": "<ul class=\"times rv\">\n<li><div class=\"to\" data-i18n=\"x001\">東京BRT <small data-i18n=\"t101\">停留所</small></div><div class=\"m\" data-i18n=\"t014\">0<small data-i18n=\"t015\">分</small></div></li>\n<li><div class=\"to\" data-i18n=\"x002\">「勝どき」駅 <small data-i18n=\"t102\">大江戸線</small></div><div class=\"m\" data-i18n=\"x003\">18<small data-i18n=\"t015\">分</small></div></li>\n</ul>"}], "maxPages": 1, "grid": 0}, {"no": "07 — Outline", "light": true, "h2": "<h2 data-i18n=\"t104\">販売概要・物件概要</h2>", "lead": "", "blocks": [{"type": "row", "cols": 1, "figs": [{"type": "fig", "src": "img/u00_plan2d.jpg", "w": 1404, "h": 1224, "cap": "<span class=\"t\" data-i18n=\"t105\">間取図</span><span class=\"d\">　3LDK＋WIC＋S（92.76㎡）</span>"}]}, {"type": "table", "rows": ["<tr><th data-i18n=\"t106\">物件名</th><td data-i18n=\"t107\">晴海フラッグ SUN VILLAGE T棟　4505号室</td></tr>", "<tr><th data-i18n=\"t108\">販売価格</th><td data-i18n=\"t109\"><b data-i18n=\"t002\">3億2,000万円</b></td></tr>", "<tr><th data-i18n=\"t110\">管理費</th><td data-i18n=\"t111\">35,810円／月</td></tr>", "<tr><th data-i18n=\"t112\">修繕積立金</th><td data-i18n=\"t113\">18,090円／月</td></tr>", "<tr><th data-i18n=\"t114\">その他費用</th><td data-i18n=\"t115\">インターネット等 3,350円／月（目安・実費）</td></tr>", "<tr><th data-i18n=\"t116\">現況</th><td data-i18n=\"t008\">空室</td></tr>", "<tr><th data-i18n=\"t117\">引渡し</th><td data-i18n=\"t118\">相談</td></tr>", "<tr><th data-i18n=\"t119\">所在地</th><td data-i18n=\"t120\">東京都中央区晴海五丁目5-7</td></tr>", "<tr><th data-i18n=\"t121\">交通</th><td data-i18n=\"t122\">東京BRT 徒歩0分<br/>（新橋・虎ノ門へ直通）<br/>都営大江戸線「勝どき」駅 徒歩18分</td></tr>", "<tr><th data-i18n=\"t123\">所在階</th><td data-i18n=\"t124\">45階（南西角住戸）</td></tr>", "<tr><th data-i18n=\"t125\">間取り</th><td data-i18n=\"t126\">3LDK＋WIC＋S（5TM92タイプ）</td></tr>", "<tr><th data-i18n=\"x017\">専有面積</th><td data-i18n=\"t128\">92.76㎡（バルコニー 42.39㎡）</td></tr>", "<tr><th data-i18n=\"t129\">構造・規模</th><td data-i18n=\"t130\">鉄筋コンクリート造一部鉄骨造<br/>地上50階・地下1階建<br/>（免震＋制震ハイブリッド構造）</td></tr>", "<tr><th data-i18n=\"t131\">総戸数</th><td data-i18n=\"t132\">733戸</td></tr>", "<tr><th data-i18n=\"t133\">竣工</th><td data-i18n=\"t134\">2025年10月</td></tr>", "<tr><th data-i18n=\"t135\">管理</th><td data-i18n=\"t136\">三菱地所コミュニティ</td></tr>", "<tr><th data-i18n=\"t137\">駐車場</th><td data-i18n=\"t138\">敷地内（要抽選・別途費用）</td></tr>"]}, {"type": "note", "html": "<p class=\"note\" data-i18n=\"t139\">※販売価格・管理費等は2026年10月現在のものです。最新の販売状況はお問い合わせください。</p>"}, {"type": "note", "html": "<p class=\"note\" data-i18n=\"t140\">※3D間取図の内装仕上げ・家具はイメージです。現況は空室です。</p>"}], "maxPages": 1, "grid": 0}], "cover": {"en": "<p class=\"en\">Harumi Flag — For Sale</p>", "no": "<p class=\"no\">4505<small>45F</small></p>", "h1": "<h1 data-i18n=\"t004\">晴海フラッグ<br class=\"pc\"/> SUN VILLAGE T棟</h1>", "tag": "<p class=\"cp\" data-i18n=\"t003\">東京湾の、最前列で暮らす。</p>", "spec": "<ul class=\"spec\">\n<li data-i18n=\"t005\">45階 南西角住戸</li><li>3LDK＋WIC＋S</li><li data-i18n=\"t006\">専有 92.76㎡</li><li data-i18n=\"t007\">バルコニー 42.39㎡</li><li data-i18n=\"t008\">空室</li>\n</ul>", "price": "<p class=\"p\" data-i18n=\"t009\"><span data-i18n=\"t108\">販売価格</span><b data-i18n=\"t002\">3億2,000万円</b></p>", "keys": "<div class=\"keys\">\n<ul>\n<li><div class=\"v\">45<small>F</small></div><div class=\"k\">Floor</div></li>\n<li><div class=\"v\">92.76<small>㎡</small></div><div class=\"k\">Area</div></li>\n<li><div class=\"v\">3<small>LDK</small></div><div class=\"k\">Plan</div></li>\n<li><div class=\"v\">42.39<small>㎡</small></div><div class=\"k\">Balcony</div></li>\n<li><div class=\"v\" data-i18n=\"t012\">733<small data-i18n=\"t013\">戸</small></div><div class=\"k\">Residences</div></li>\n<li><div class=\"v\" data-i18n=\"t014\">0<small data-i18n=\"t015\">分</small></div><div class=\"k\" data-i18n=\"t016\">BRT 徒歩</div></li>\n</ul>\n</div>", "img": "img/cover_pdf.jpg"}, "back": {"img": "img/back_pdf.jpg", "inner": "\n<p class=\"en rv\">Harumi Flag Sun Village — 4505</p>\n<h2 class=\"rv\" data-i18n=\"t141\">45階、<br/>湾岸の空と暮らす。</h2>\n<p class=\"p rv\" data-i18n=\"t142\">販売価格<b data-i18n=\"t002\">3億2,000万円</b></p>\n<ul class=\"rv\">\n<li data-i18n=\"t005\">45階 南西角住戸</li><li>3LDK＋WIC＋S</li><li>92.76㎡</li><li data-i18n=\"t007\">バルコニー 42.39㎡</li><li data-i18n=\"t008\">空室</li>\n</ul>\n"}, "notes": "<p data-i18n=\"t143\">※動画・画像の一部は、完成予想CGや実写をもとにAIで生成したイメージです。掲載内容は2026年10月現在のものです。</p>", "brand": "HARUMI FLAG — FOR SALE — 4505"};
+const MM=3.7795;
+function tr(el,dic,l){ if(l==='ja')return; [el,...el.querySelectorAll('[data-i18n]')].filter(e=>e.hasAttribute&&e.hasAttribute('data-i18n')).forEach(e=>{const t=dic[l]&&dic[l][e.getAttribute('data-i18n')]; if(t)e.innerHTML=t;}); }
+function fixSrc(h){ return h.replace(/ loading="lazy"/g,'').replace(/(src|poster)="(?!https?:|\.\.\/)([^"]+)"/g,'$1="../$2"'); }
+function el(html){ const d=document.createElement('div'); d.innerHTML=fixSrc(html); return d.firstElementChild||d; }
+function newPage(dark, label, n){
+  const p=document.createElement('section'); p.className='page'+(dark?' dark':'');
+  p.innerHTML='<div class="inner"></div><div class="foot"><span>'+DATA.brand+'</span><span>'+String(n).padStart(2,'0')+'</span></div>';
+  document.body.appendChild(p); return p.querySelector('.inner');
+}
+function figHTML(f,h,contain){ const isMap=/map|route|schedule|plan2d|plan3d|png$|\{lang\}/.test(f.src);   // 図版・言語別の図は切らずに全体を収める
+  return '<figure><div class="ph'+((contain||isMap)?' contain':'')+'" style="height:'+h+'mm"><img src="../'+f.src.replace('{lang}',window.__L||'ja')+'"></div>'+(f.cap?'<figcaption>'+f.cap+'</figcaption>':'')+'</figure>'; }
+function blockEl(b){
+  if(b.type==='row'){
+    const W=182; let h;
+    if(b.cols===1){ const f=b.figs[0]; h=Math.min(W*f.h/f.w, /plan/.test(f.src)?120:92); }
+    else h=b.cols===2?56:40;
+    const d=document.createElement('div'); d.className='row c'+b.cols; d.innerHTML=fixSrc(b.figs.map(f=>figHTML(f,h)).join('')); return d;
+  }
+  if(b.type==='table'){ const rows=b.rows; const half=rows.length>9?Math.ceil(rows.length/2):rows.length;
+    const d=document.createElement('div'); d.className=rows.length>9?'tbl2':'';
+    d.innerHTML='<table class="tbl">'+rows.slice(0,half).join('')+'</table>'+(rows.length>9?'<table class="tbl">'+rows.slice(half).join('')+'</table>':''); return d; }
+  return el(b.html);
+}
+window.overflowPages=()=>[...document.querySelectorAll('.page .inner')].map((x,i)=>({i:i+1,o:x.scrollHeight-x.clientHeight})).filter(x=>x.o>2);
+window.build=function(dic,l){
+  document.documentElement.lang=l; window.__L=l; let n=0;
+  // cover
+  const c=DATA.cover, cv=document.createElement('section'); cv.className='page cover';
+  cv.innerHTML='<div class="bg"><img src="../'+c.img+'"></div><div class="in">'+c.en+(/class="cp"/.test(c.tag)?c.tag+c.no+c.h1:c.no+c.h1+c.tag)+c.spec.replace('class="spec"','class="spec"')+c.price+c.keys+'</div>';
+  tr(cv,dic,l); document.body.appendChild(cv);
+  // chapters
+  const chs=DATA.chapters;
+  if(chs.length){ const last=chs[chs.length-1]; (DATA.notes.match(/<p[\s\S]*?<\/p>/g)||[]).forEach(h=>last.blocks.push({type:'note',html:h.replace('<p','<p class="note"')})); }
+  chs.forEach(ch=>{
+    n++; let inner=newPage(!ch.light, ch.no, n); let used=1; const maxP=ch.maxPages||1;
+    const hd=document.createElement('div'); hd.className='hd'; hd.innerHTML='<p class="no">'+ch.no+'</p>'+ch.h2+(ch.lead?ch.lead.replace(/class="[^"]*"/,'class="lead"'):''); tr(hd,dic,l); inner.appendChild(hd);
+    ch.blocks.forEach(b=>{
+      const e=blockEl(b); tr(e,dic,l); inner.appendChild(e);
+      if(inner.scrollHeight>inner.clientHeight+2 && b.type==='row'){   // まず写真を縮めて収める
+        const phs=[...e.querySelectorAll('.ph')]; const h0=parseFloat(phs[0].style.height);
+        const need=(inner.scrollHeight-inner.clientHeight)/MM+1.5; const h1=h0-need;
+        if(h1>=h0*0.55){ phs.forEach(x=>x.style.height=h1+'mm'); }
+      }
+      if(inner.scrollHeight>inner.clientHeight+2 && b.type==='row' && inner.children.length>1 && used>=maxP){ inner.removeChild(e); return; }  // 収まらない写真段は省く（maxPages まで使い切った後だけ）
+      if(inner.scrollHeight>inner.clientHeight+2 && inner.children.length>1){
+        inner.removeChild(e); n++; used++; inner=newPage(!ch.light, ch.no, n);
+        const h=document.createElement('div'); h.className='hd'; h.innerHTML='<p class="no">'+ch.no+'</p>'; inner.appendChild(h); inner.appendChild(e);
+      }
+    });
+  });
+  // back
+  const bk=document.createElement('section'); bk.className='page cover back';
+  bk.innerHTML='<div class="bg"><img src="../'+DATA.back.img+'"></div><div class="in">'+fixSrc(DATA.back.inner)+'</div>';
+  tr(bk,dic,l); document.body.appendChild(bk);
+};
+</script>
+</body>
+</html>
